@@ -24,14 +24,22 @@ All User Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:user'])->group(function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('_users.home');
+    Route::get('/user/home', [HomeController::class, 'userHome'])->name('_users.home');
 
-    // Route untuk profil saya
-    Route::get('/user/my-profile', [UserController::class, 'myProfile'])->name('_users.profile.my_profile');
-    Route::get('/user/edit-profile', [UserController::class, 'editProfile'])->name('_users.profile.edit_profile');
-    Route::get('/user/change-password', [UserController::class, 'changePassword'])->name('_users.profile.change_password');
-    Route::put('/user/update-profile', [UserController::class, 'updateProfile'])->name('_users.profile.update');
-    Route::put('/user/update-password', [UserController::class, 'updatePassword'])->name('_users.profile.update_password');
+    // Manajemen Proyek
+    Route::get('/user/projects', [UserProjectController::class, 'index'])->name('_users.projects.index');
+    Route::get('/user/projects/{id}', [UserProjectController::class, 'show'])->name('_users.projects.show');
+
+    // Manajemen Tugas
+    Route::get('/user/tasks', [UserTaskController::class, 'index'])->name('_users.tasks.index');
+    Route::get('/user/tasks/{id}', [UserTaskController::class, 'show'])->name('_users.tasks.show');
+
+    // Manajemen Komentar dan Lampiran
+    Route::post('/user/tasks/{id}/comments', [CommentController::class, 'store'])->name('_users.tasks.comments.store');
+    Route::post('/user/tasks/{id}/attachments', [AttachmentController::class, 'store'])->name('_users.tasks.attachments.store');
+
+    // Manajemen Notifikasi
+    Route::get('/user/notifications', [NotificationController::class, 'index'])->name('_users.notifications.index');
 });
 
 /*------------------------------------------
@@ -106,7 +114,35 @@ Route::middleware(['auth', 'user-access:ketua'])->group(function () {
     Route::get('/ketua/change-password', [KetuaController::class, 'changePassword'])->name('_ketuas.profile.change_password');
     Route::put('/ketua/update-profile', [KetuaController::class, 'updateProfile'])->name('_ketuas.profile.update');
     Route::put('/ketua/update-password', [KetuaController::class, 'updatePassword'])->name('_ketuas.profile.update_password');
+
+    // Route untuk projects
+    Route::get('/ketua/projects', [ProjectController::class, 'index'])->name('_ketuas.projects.index');
+    Route::get('/ketua/projects/create', [ProjectController::class, 'create'])->name('_ketuas.projects.create');
+    Route::post('/ketua/projects', [ProjectController::class, 'store'])->name('_ketuas.projects.store');
+    Route::get('/ketua/projects/{id}', [ProjectController::class, 'show'])->name('_ketuas.projects.show');
+    Route::get('/ketua/projects/{id}/edit', [ProjectController::class, 'edit'])->name('_ketuas.projects.edit');
+    Route::put('/ketua/projects/{id}', [ProjectController::class, 'update'])->name('_ketuas.projects.update');
+    Route::delete('/ketua/projects/{id}', [ProjectController::class, 'destroy'])->name('_ketuas.projects.destroy');
+
+    // Route untuk tasks
+    Route::get('/ketua/tasks', [TaskController::class, 'index'])->name('_ketuas.tasks.index');
+    Route::get('/ketua/tasks/create', [TaskController::class, 'create'])->name('_ketuas.tasks.create');
+    Route::post('/ketua/tasks', [TaskController::class, 'store'])->name('_ketuas.tasks.store');
+    Route::get('/ketua/tasks/{id}', [TaskController::class, 'show'])->name('_ketuas.tasks.show');
+    Route::get('/ketua/tasks/{id}/edit', [TaskController::class, 'edit'])->name('_ketuas.tasks.edit');
+    Route::put('/ketua/tasks/{id}', [TaskController::class, 'update'])->name('_ketuas.tasks.update');
+    Route::delete('/ketua/tasks/{id}', [TaskController::class, 'destroy'])->name('_ketuas.tasks.destroy');
+
+    // Route untuk notifications
+    Route::get('/ketua/notifications', [NotificationController::class, 'index'])->name('_ketuas.notifications.index');
+
+    // Route untuk comments
+    Route::get('/ketua/comments', [CommentController::class, 'index'])->name('_ketuas.comments.index');
+
+    // Route untuk attachments
+    Route::get('/ketua/attachments', [AttachmentController::class, 'index'])->name('_ketuas.attachments.index');
 });
+
 
 /*------------------------------------------
 --------------------------------------------
@@ -116,10 +152,21 @@ All Member Routes List
 Route::middleware(['auth', 'user-access:member'])->group(function () {
     Route::get('/member/home', [HomeController::class, 'memberHome'])->name('_members.home');
 
-    // Route untuk profil saya
-    Route::get('/member/my-profile', [MemberController::class, 'myProfile'])->name('_members.profile.my_profile');
-    Route::get('/member/edit-profile', [MemberController::class, 'editProfile'])->name('_members.profile.edit_profile');
-    Route::get('/member/change-password', [MemberController::class, 'changePassword'])->name('_members.profile.change_password');
-    Route::put('/member/update-profile', [MemberController::class, 'updateProfile'])->name('_members.profile.update');
-    Route::put('/member/update-password', [MemberController::class, 'updatePassword'])->name('_members.profile.update_password');
+    // Manajemen Proyek
+    Route::get('/member/projects', [MemberProjectController::class, 'index'])->name('_members.projects.index');
+    Route::get('/member/projects/{id}', [MemberProjectController::class, 'show'])->name('_members.projects.show');
+
+    // Manajemen Tugas
+    Route::get('/member/tasks', [MemberTaskController::class, 'index'])->name('_members.tasks.index');
+    Route::get('/member/tasks/{id}', [MemberTaskController::class, 'show'])->name('_members.tasks.show');
+    Route::get('/member/tasks/{id}/edit', [MemberTaskController::class, 'edit'])->name('_members.tasks.edit');
+    Route::put('/member/tasks/{id}', [MemberTaskController::class, 'update'])->name('_members.tasks.update');
+
+    // Manajemen Komentar dan Lampiran
+    Route::post('/member/tasks/{id}/comments', [CommentController::class, 'store'])->name('_members.tasks.comments.store');
+    Route::post('/member/tasks/{id}/attachments', [AttachmentController::class, 'store'])->name('_members.tasks.attachments.store');
+
+    // Manajemen Notifikasi
+    Route::get('/member/notifications', [NotificationController::class, 'index'])->name('_members.notifications.index');
 });
+

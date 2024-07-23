@@ -12,71 +12,79 @@
     </div>
     <div class="menu-inner-shadow"></div>
     <ul class="menu-inner py-1">
-        <!-- Dashboards Section -->
+        <!-- Dashboard -->
         <li class="menu-item {{ request()->routeIs('_ketuas.home') ? 'active open' : '' }}">
             <a href="{{ route('_ketuas.home') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Dashboards">Dashboards</div>
+                <div data-i18n="Dashboards">Dashboard</div>
             </a>
         </li>
 
-        <!-- Apps & Pages Header -->
+        <!-- Projects Section -->
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Apps &amp; Pages</span>
+            <span class="menu-header-text">Projects</span>
         </li>
-
-        <!-- Projects Menu Item -->
-        <li class="menu-item">
-            <a href="" class="menu-link">
+        <li class="menu-item {{ request()->routeIs('_ketuas.projects.index') ? 'active open' : '' }}">
+            <a href="{{ route('_ketuas.projects.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-briefcase"></i>
-                <div data-i18n="Project">Project</div>
+                <div data-i18n="Projects">Daftar Proyek yang dikelola</div>
+            </a>
+        </li>
+        <li class="menu-item {{ request()->routeIs('_ketuas.projects.create') ? 'active open' : '' }}">
+            <a href="{{ route('_ketuas.projects.create') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-plus-circle"></i>
+                <div data-i18n="Create Project">Tambah Proyek</div>
             </a>
         </li>
 
-        <!-- Tasks Menu Item -->
-        <li class="menu-item">
-            <a href="" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-task"></i>
-                <div data-i18n="Task">Task</div>
-            </a>
-        </li>
-
-        <!-- Teams Menu Item -->
-        <li class="menu-item">
-            <a href="" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-group"></i>
-                <div data-i18n="Team">Team</div>
-            </a>
-        </li>
-
-        <!-- Account Header -->
+        <!-- Tasks Section -->
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Account</span>
+            <span class="menu-header-text">Tasks</span>
+        </li>
+        <li class="menu-item {{ request()->routeIs('_ketuas.tasks.index') ? 'active open' : '' }}">
+            <a href="{{ route('_ketuas.tasks.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-task"></i>
+                <div data-i18n="Tasks">Daftar Tugas yang dikelola</div>
+            </a>
+        </li>
+        <li class="menu-item {{ request()->routeIs('_ketuas.tasks.create') ? 'active open' : '' }}">
+            <a href="{{ route('_ketuas.tasks.create') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-plus-circle"></i>
+                <div data-i18n="Create Task">Tambah Tugas</div>
+            </a>
         </li>
 
-        <!-- Account Settings Menu Item -->
-        <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">Account Settings</div>
+        <!-- Notifications Section -->
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Notifications</span>
+        </li>
+        <li class="menu-item {{ request()->routeIs('_ketuas.notifications.index') ? 'active open' : '' }}">
+            <a href="{{ route('_ketuas.notifications.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-bell"></i>
+                <div data-i18n="Notifications">Daftar Notifikasi terkait tugas</div>
             </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="" class="menu-link">
-                        <div data-i18n="Account">Account</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="pages-account-settings-notifications.html" class="menu-link">
-                        <div data-i18n="Notifications">Notifications</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="pages-account-settings-connections.html" class="menu-link">
-                        <div data-i18n="Connections">Connections</div>
-                    </a>
-                </li>
-            </ul>
+        </li>
+
+        <!-- Comments Section -->
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Comments</span>
+        </li>
+        <li class="menu-item {{ request()->routeIs('_ketuas.comments.index') ? 'active open' : '' }}">
+            <a href="{{ route('_ketuas.comments.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-comment"></i>
+                <div data-i18n="Comments">Daftar Komentar pada tugas yang dikelola</div>
+            </a>
+        </li>
+
+        <!-- Attachments Section -->
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Attachments</span>
+        </li>
+        <li class="menu-item {{ request()->routeIs('_ketuas.attachments.index') ? 'active open' : '' }}">
+            <a href="{{ route('_ketuas.attachments.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-paperclip"></i>
+                <div data-i18n="Attachments">Daftar Lampiran pada tugas yang dikelola</div>
+            </a>
         </li>
     </ul>
 </aside>

@@ -24,9 +24,27 @@ class Task extends Model
         return $this->belongsTo(Project::class);
     }
 
-    public function assignee()
+    public function assignedToUser()
     {
         return $this->belongsTo(User::class, 'assigned_to');
+    }
+
+    public function getStatusColorAttribute()
+    {
+        return match($this->status) {
+            'to-do' => 'secondary',
+            'in-progress' => 'warning',
+            'done' => 'success',
+        };
+    }
+
+    public function getPriorityColorAttribute()
+    {
+        return match($this->priority) {
+            'low' => 'info',
+            'medium' => 'warning',
+            'high' => 'danger',
+        };
     }
 
     public function comments()

@@ -38,7 +38,11 @@
                         <td class="text-center">{{ $index + 1 }}</td>
                         <td class="text-center">{{ $task->title }}</td>
                         <td class="text-center">{{ $task->description }}</td>
-                        <td class="text-center">{{ $task->assigned_to_user->name }}</td>
+                        <td class="text-center">@if ($task->assignedToUser)
+                                                    {{ $task->assignedToUser->name }}
+                                                @else
+                                                    N/A
+                                                @endif</td>
                         <td class="text-center">{{ $task->due_date }}</td>
                         <td class="text-center">
                             <span class="badge bg-{{ $task->status_color }}">{{ ucfirst($task->status) }}</span>

@@ -19,9 +19,9 @@
 <body>
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
-      @include('layouts.sidebar')
+      @include('layouts.user.sidebar')
       <div class="layout-page">
-        @include('layouts.navbar')
+        @include('layouts.user.navbar')
         <div class="content-wrapper">
           @yield('content')
         </div>

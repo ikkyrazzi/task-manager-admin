@@ -12,71 +12,36 @@
     </div>
     <div class="menu-inner-shadow"></div>
     <ul class="menu-inner py-1">
-        <!-- Dashboards Section -->
-        <li class="menu-item {{ request()->routeIs('dashboard') ? 'active open' : '' }}">
-            <a href="{{ route('dashboard') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Dashboards">Dashboards</div>
-            </a>
-        </li>
-
-        <!-- Apps & Pages Header -->
-        <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Apps &amp; Pages</span>
-        </li>
-
-        <!-- Projects Menu Item -->
-        <li class="menu-item {{ request()->routeIs('projects.*') ? 'active' : '' }}">
-            <a href="{{ route('projects.index') }}" class="menu-link">
+        <!-- Project Management Menu Item -->
+        <li class="menu-item">
+            <a href="" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-briefcase"></i>
-                <div data-i18n="Project">Project</div>
+                <div data-i18n="Project Management">Manajemen Proyek</div>
             </a>
         </li>
 
-        <!-- Tasks Menu Item -->
-        <li class="menu-item {{ request()->routeIs('tasks.*') ? 'active' : '' }}">
-            <a href="{{ route('tasks.index') }}" class="menu-link">
+        <!-- Task Management Menu Item -->
+        <li class="menu-item">
+            <a href="" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-task"></i>
-                <div data-i18n="Task">Task</div>
+                <div data-i18n="Task Management">Manajemen Tugas</div>
             </a>
         </li>
 
-        <!-- Teams Menu Item -->
-        <li class="menu-item {{ request()->routeIs('teams.*') ? 'active' : '' }}">
-            <a href="{{ route('teams.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-group"></i>
-                <div data-i18n="Team">Team</div>
+        <!-- Notification Management Menu Item -->
+        <li class="menu-item">
+            <a href="" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-bell"></i>
+                <div data-i18n="Notification Management">Manajemen Notifikasi</div>
             </a>
         </li>
 
-        <!-- Account Header -->
-        <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Account</span>
-        </li>
-
-        <!-- Account Settings Menu Item -->
-        <li class="menu-item {{ request()->routeIs('users.*') ? 'active open' : '' }}">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">Account Settings</div>
+        <!-- Comment and Attachment Management Menu Item -->
+        <li class="menu-item">
+            <a href="" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-comment"></i>
+                <div data-i18n="Comment and Attachment Management">Manajemen Komentar dan Lampiran</div>
             </a>
-            <ul class="menu-sub {{ request()->routeIs('users.*') ? 'show' : '' }}">
-                <li class="menu-item {{ request()->routeIs('users.index') ? 'active' : '' }}">
-                    <a href="{{ route('users.index') }}" class="menu-link">
-                        <div data-i18n="Account">Account</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="pages-account-settings-notifications.html" class="menu-link">
-                        <div data-i18n="Notifications">Notifications</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="pages-account-settings-connections.html" class="menu-link">
-                        <div data-i18n="Connections">Connections</div>
-                    </a>
-                </li>
-            </ul>
         </li>
     </ul>
 </aside>

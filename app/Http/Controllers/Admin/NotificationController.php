@@ -11,18 +11,22 @@ class NotificationController extends Controller
     public function index()
     {
         $notifications = Notification::all();
-        return view('admin.notifications.index', compact('notifications'));
+        return view('_admins.notifications.index', compact('notifications'));
     }
 
-    public function show(Notification $notification)
+    public function show($id)
     {
-        return view('admin.notifications.show', compact('notification'));
+        if (is_null($notification->read_at)) {
+            $notification->update(['read_at' => now()]);
+        }
+        
+        return view('_admins.notifications.show', compact('notification'));
     }
 
-    public function destroy(Notification $notification)
+    public function destroy($id)
     {
         $notification->delete();
 
-        return redirect()->route('admin.notifications.index');
+        return redirect()->route('_admins.notifications.index');
     }
 }

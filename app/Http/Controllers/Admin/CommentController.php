@@ -11,18 +11,18 @@ class CommentController extends Controller
     public function index()
     {
         $comments = Comment::all();
-        return view('admin.comments.index', compact('comments'));
+        return view('_admins.comments.index', compact('comments'));
     }
 
     public function show(Comment $comment)
     {
-        return view('admin.comments.show', compact('comment'));
+        return view('_admins.comments.show', compact('comment'));
     }
 
     public function destroy(Comment $comment)
     {
         $comment->delete();
 
-        return redirect()->route('admin.comments.index');
+        return redirect()->route('_admins.comments.index');
     }
 }

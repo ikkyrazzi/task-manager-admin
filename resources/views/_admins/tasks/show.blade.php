@@ -15,8 +15,8 @@
             <p class="card-text"><strong>Due Date:</strong> {{ $task->due_date }}</p>
             <p class="card-text"><strong>Status:</strong> {{ ucfirst($task->status) }}</p>
             <p class="card-text"><strong>Priority:</strong> {{ ucfirst($task->priority) }}</p>
-            <a href="{{ route('admin.tasks.edit', $task->id) }}" class="btn btn-primary">Edit</a>
-            <form action="{{ route('admin.tasks.destroy', $task->id) }}" method="POST" style="display:inline;">
+            <a href="{{ route('_admins.tasks.edit', $task->id) }}" class="btn btn-primary">Edit</a>
+            <form action="{{ route('_admins.tasks.destroy', $task->id) }}" method="POST" style="display:inline;">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Delete</button>

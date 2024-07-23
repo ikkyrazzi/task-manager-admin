@@ -18,7 +18,9 @@ class TaskController extends Controller
 
     public function create()
     {
-        return view('_admins.tasks.create');
+        $projects = Project::all();
+        $users = User::where('type', 2)->get();
+        return view('_admins.tasks.create', compact('projects', 'users'));
     }
 
     public function store(Request $request)

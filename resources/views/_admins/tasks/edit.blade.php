@@ -8,7 +8,7 @@
 
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('admin.tasks.update', $task->id) }}" method="POST">
+            <form action="{{ route('_admins.tasks.update', $task->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
